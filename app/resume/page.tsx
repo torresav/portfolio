@@ -37,19 +37,19 @@ export default function Resume() {
     }, []);
 
     return (
-        <div className="max-w-6xl mx-auto py-28">
+        <div>
             {/* Render the DownloadResumeButton component */}
             <DownloadResumeButton filePath={pdf} />
             {/* Render the Document component from react-pdf */}
-            <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-5 mb-5">
+            <div className="flex justify-center mt-5 mb-5">
                 <Document file={pdf}>
-                    {/* Render the Page components for each page in the PDF */}
-                    {Array.from(new Array(2), (item, index) => (
+                    {/* Render the Page components for each page in the PDF, resume is only one page but keep this in case it goes to two pages */}
+                    {Array.from(new Array(1), (item, index) => (
                         <Page
                             key={`page_${index + 1}`}
                             pageNumber={index + 1}
                             width={width} // Set the width to the width of the viewer
-                            scale={0.82} // Adjust the scale factor as needed
+                            scale={0.9} // Adjust the scale factor as needed
                         />
                     ))}
                 </Document>

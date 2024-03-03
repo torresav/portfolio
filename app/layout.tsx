@@ -21,7 +21,7 @@ export default function RootLayout({
                 <div>
                     <Navbar />
                 </div>
-                <div className="px-20">{children}</div>
+                <div className="px-8 md:px-8 sm:px-8 lg:px-8">{children}</div>
             </body>
         </html>
     );
