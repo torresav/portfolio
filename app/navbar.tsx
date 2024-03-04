@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
@@ -30,8 +30,25 @@ const Navbar = () => {
         },
     ];
 
+    // Function to hide nav on resize
+    const handleResize = () => {
+        if (window.innerWidth >= 768) {
+            setNav(false);
+        }
+    };
+
+    // Set up event listener for window resize
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+
+        // Clean up the event listener
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     return (
-        <div className="z-50 flex items-center justify-between h-20 px-10 text-white bg-black nav">
+        <div className="z-50 flex items-center justify-between h-20 text-white bg-black nav">
             <div>
                 <h1 className="ml-2 text-3xl font-signature">
                     <a className="link-underline link-underline-black" href="/" rel="noreferrer">
@@ -42,7 +59,7 @@ const Navbar = () => {
 
             <ul className="hidden md:flex">
                 {links.map(({ id, link, label }) => (
-                    <li key={id} className="px-4 font-medium text-gray-500 capitalize duration-200 cursor-pointer nav-links hover:scale-105 hover:text-white link-underline">
+                    <li key={id} className="px-4 font-medium capitalize duration-200 cursor-pointer text-stone-200 nav-links hover:scale-110 link-underline">
                         <Link href={link}>{label}</Link>
                     </li>
                 ))}
@@ -53,9 +70,9 @@ const Navbar = () => {
             </div>
 
             {nav && (
-                <ul className="absolute top-0 left-0 flex flex-col items-center justify-center w-full h-screen text-gray-500 bg-gradient-to-b from-black to-gray-800">
+                <ul className="absolute top-0 left-0 flex flex-col items-center justify-center w-full pb-4 text-stone-200 pt-14 bg-neutral-900">
                     {links.map(({ id, link, label }) => (
-                        <li key={id} className="px-4 py-6 text-4xl capitalize cursor-pointer">
+                        <li key={id} className="px-4 py-4 text-2xl capitalize cursor-pointer">
                             <Link onClick={() => setNav(!nav)} href={link}>
                                 {label}
                             </Link>
