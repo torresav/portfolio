@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
@@ -30,10 +30,27 @@ const Navbar = () => {
         },
     ];
 
+    // Function to hide nav on resize
+    const handleResize = () => {
+        if (window.innerWidth >= 768) {
+            setNav(false);
+        }
+    };
+
+    // Set up event listener for window resize
+    useEffect(() => {
+        window.addEventListener("resize", handleResize);
+
+        // Clean up the event listener
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
     return (
-        <div className="flex justify-between items-center w-full h-20 px-40 text-white bg-black fixed nav .sticky z-50">
+        <div className="flex items-center justify-between h-20 text-white bg-black nav">
             <div>
-                <h1 className="text-3xl font-signature ml-2">
+                <h1 className="ml-2 text-3xl font-signature">
                     <a className="link-underline link-underline-black" href="/" rel="noreferrer">
                         AT.
                     </a>
@@ -42,20 +59,20 @@ const Navbar = () => {
 
             <ul className="hidden md:flex">
                 {links.map(({ id, link, label }) => (
-                    <li key={id} className="nav-links px-4 cursor-pointer capitalize font-medium text-gray-500 hover:scale-105 hover:text-white duration-200 link-underline">
+                    <li key={id} className="px-4 font-medium capitalize duration-200 cursor-pointer text-stone-200 nav-links hover:scale-110 link-underline">
                         <Link href={link}>{label}</Link>
                     </li>
                 ))}
             </ul>
 
-            <div onClick={() => setNav(!nav)} className="cursor-pointer pr-4 z-10 text-gray-500 md:hidden">
+            <div onClick={() => setNav(!nav)} className="z-20 pr-4 text-gray-500 cursor-pointer md:hidden">
                 {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
             </div>
 
             {nav && (
-                <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
+                <ul className="absolute top-0 left-0 z-10 flex flex-col items-center justify-center w-full pb-4 text-stone-200 pt-14 bg-neutral-900">
                     {links.map(({ id, link, label }) => (
-                        <li key={id} className="px-4 cursor-pointer capitalize py-6 text-4xl">
+                        <li key={id} className="px-4 py-4 text-2xl capitalize cursor-pointer">
                             <Link onClick={() => setNav(!nav)} href={link}>
                                 {label}
                             </Link>
