@@ -48,7 +48,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <div className="z-50 flex items-center justify-between h-20 text-white bg-black nav">
+        <div className="flex items-center justify-between h-20 text-white bg-black nav">
             <div>
                 <h1 className="ml-2 text-3xl font-signature">
                     <a className="link-underline link-underline-black" href="/" rel="noreferrer">
@@ -65,12 +65,12 @@ const Navbar = () => {
                 ))}
             </ul>
 
-            <div onClick={() => setNav(!nav)} className="z-10 pr-4 text-gray-500 cursor-pointer md:hidden">
+            <div onClick={() => setNav(!nav)} className="z-20 pr-4 text-gray-500 cursor-pointer md:hidden">
                 {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
             </div>
 
             {nav && (
-                <ul className="absolute top-0 left-0 flex flex-col items-center justify-center w-full pb-4 text-stone-200 pt-14 bg-neutral-900">
+                <ul className="absolute top-0 left-0 z-10 flex flex-col items-center justify-center w-full pb-4 text-stone-200 pt-14 bg-neutral-900">
                     {links.map(({ id, link, label }) => (
                         <li key={id} className="px-4 py-4 text-2xl capitalize cursor-pointer">
                             <Link onClick={() => setNav(!nav)} href={link}>
