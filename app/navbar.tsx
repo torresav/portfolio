@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
@@ -56,7 +55,6 @@ const Navbar = () => {
                     </a>
                 </h1>
             </div>
-
             <ul className="hidden md:flex">
                 {links.map(({ id, link, label }) => (
                     <li key={id} className="px-4 font-medium capitalize duration-200 cursor-pointer text-stone-200 nav-links hover:scale-110 link-underline">
@@ -64,22 +62,29 @@ const Navbar = () => {
                     </li>
                 ))}
             </ul>
-
-            <div onClick={() => setNav(!nav)} className="z-20 pr-4 text-gray-500 cursor-pointer md:hidden">
-                {nav ? <FaTimes size={30} /> : <FaBars size={30} />}
-            </div>
-
-            {nav && (
-                <ul className="absolute top-0 left-0 z-10 flex flex-col items-center justify-center w-full pb-4 text-stone-200 pt-14 bg-neutral-900">
-                    {links.map(({ id, link, label }) => (
-                        <li key={id} className="px-4 py-4 text-2xl capitalize cursor-pointer">
-                            <Link onClick={() => setNav(!nav)} href={link}>
-                                {label}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            )}
+            <button onClick={() => setNav(!nav)} className="z-20 flex flex-col items-center justify-center md:hidden">
+                <span
+                    className={`bg-white block transition-all duration-300 ease-out
+                            h-0.5 w-6 rounded-sm ${nav ? "rotate-45 translate-y-1" : "-translate-y-0.5"}
+                            `}></span>
+                <span
+                    className={`bg-white block transition-all duration-300 ease-out
+                            h-0.5 w-6 rounded-sm my-0.5 ${nav ? "opacity-0" : "opacity-100"}
+                            `}></span>
+                <span
+                    className={`bg-white block transition-all duration-300 ease-out
+                            h-0.5 w-6 rounded-sm ${nav ? "-rotate-45 -translate-y-1" : "translate-y-0.5"}
+                            `}></span>
+            </button>
+            <ul className={`${nav ? "max-h-full" : "max-h-0 invisible"} absolute top-0 left-0 z-10 flex flex-col items-center justify-center overflow-hidden w-full pb-4 transition-all duration-300 ease-in-out text-stone-200 bg-neutral-900 pt-14`}>
+                {links.map(({ id, link, label }) => (
+                    <li key={id} className="px-4 py-4 text-2xl capitalize cursor-pointer">
+                        <Link onClick={() => setNav(!nav)} href={link}>
+                            {label}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
