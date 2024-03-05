@@ -76,7 +76,7 @@ const Navbar = () => {
                             h-0.5 w-6 rounded-sm ${nav ? "-rotate-45 -translate-y-1" : "translate-y-0.5"}
                             `}></span>
             </button>
-            <ul className={`${nav ? "max-h-full" : "max-h-0 invisible"} absolute top-0 left-0 z-10 flex flex-col items-center justify-center overflow-hidden w-full pb-4 transition-all duration-300 ease-in-out text-stone-200 bg-neutral-900 pt-14`}>
+            <ul className={`${nav ? "translate-y-0 " : "-translate-y-full"} absolute top-0 left-0 z-10 flex flex-col items-center justify-center overflow-hidden w-full pb-4 transition-all duration-200 ease-in-out text-stone-200 bg-neutral-900 pt-14`}>
                 {links.map(({ id, link, label }) => (
                     <li key={id} className="px-4 py-4 text-2xl capitalize cursor-pointer">
                         <Link onClick={() => setNav(!nav)} href={link}>
