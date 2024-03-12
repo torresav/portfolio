@@ -3,7 +3,7 @@ import SocialMediaButtons from "./components/SocialMediaButtons";
 
 export default function Home() {
     return (
-        <div className="grid grid-cols-1 gap-14 md:grid-cols-2 justify-items-center place-items-center">
+        <div className="grid grid-cols-1 mx-4 mt-10 gap-14 md:grid-cols-2 justify-items-center place-items-center md:mx-24">
             <div className="grid justify-items-center place-items-center">
                 <h1 className="text-4xl font-bold text-blue-300 font-inter">{`Hi, I'm Aaron Torres, a Software Engineer.`}</h1>
                 <br />
