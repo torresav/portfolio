@@ -1,6 +1,6 @@
 export default function About() {
     return (
-        <main className="flex items-center justify-between">
+        <main className="flex items-center justify-between mx-4 mt-10 md:mx-24">
             <div className="flex-grow">
                 <h1 className="text-xl text-blue-300">
                     Originally from Michigan, and now living in Raleigh, NC. Looking to relocate to New York City for either hybrid-remote or fully-remote position.
