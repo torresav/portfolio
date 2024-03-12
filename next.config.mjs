@@ -14,6 +14,9 @@ const nextConfig = {
 
         return config;
     },
+    env: {
+        resume: "/aaron_torres_resume.pdf",
+    },
 };
 
 export default nextConfig;

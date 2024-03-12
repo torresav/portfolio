@@ -12,8 +12,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 import DownloadResumeButton from "../components/DownloadResumeButton";
 
 export default function Resume() {
-    const pdf = "/aaron_torres_resume.pdf";
-
     // State to track the width of the window
     const [width, setWidth] = useState(0);
 
@@ -39,10 +37,10 @@ export default function Resume() {
     return (
         <div>
             {/* Render the DownloadResumeButton component */}
-            <DownloadResumeButton filePath={pdf} />
+            <DownloadResumeButton />
             {/* Render the Document component from react-pdf */}
             <div className="flex justify-center mt-5 mb-5">
-                <Document file={pdf}>
+                <Document file={process.env.resume}>
                     {/* Render the Page components for each page in the PDF, resume is only one page but keep this in case it goes to two pages */}
                     {Array.from(new Array(1), (item, index) => (
                         <Page
@@ -55,7 +53,7 @@ export default function Resume() {
                 </Document>
             </div>
             {/* Render the DownloadResumeButton component again */}
-            <DownloadResumeButton filePath={pdf} />
+            <DownloadResumeButton />
         </div>
     );
 }

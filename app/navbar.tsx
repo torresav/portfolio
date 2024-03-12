@@ -47,7 +47,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <div className="flex items-center justify-between h-20 text-white bg-black nav">
+        <div className="flex items-center justify-between h-20 px-8 text-white bg-black md:px-32 nav">
             <div>
                 <h1 className="ml-2 text-3xl font-signature">
                     <a className="link-underline link-underline-black" href="/" rel="noreferrer">
