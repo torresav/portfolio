@@ -26,7 +26,7 @@ export default function RootLayout({
                 }}>
                 <div>
                     <Navbar />
-                    <div className="p-8 mx-8 mt-20 mb-8 md:mx-32">{children}</div>
+                    <div className="p-8 mx-8 mt-5 mb-8 md:mx-32">{children}</div>
                 </div>
             </body>
         </html>
